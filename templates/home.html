@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static%}
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-md-offset-1 col-md-4">
+        
+        <form method="POST" action="add_data" autocomplete="off">
+          {% csrf_token %}
+          <h3 class="page-header text-primary text-center">
+            Registeration Form
+          </h3>
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" name="name" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input class="form-control" name="age" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" name="address" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Contact</label>
+            <input class="form-control" name="contact" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Mail</label>
+            <input class="form-control" name="mail" type="text" />
+          </div>
+          <div class="form-group pull-right">
+            <input class="btn btn-primary" value="Register" type="submit">
+            <input class="btn btn-danger" value="Clear" type="reset">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        {% if datas %}
+<h3 class="text-primary page-header text-center">View Details</h3>
+<table class="table table-bordered">
+<tr>
+  <thead>
+  <th>S.no</th>
+  <th>Name</th>
+  <th>Age</th>
+  <th>Address</th>
+  <th>Contact</th>
+  <th>Mail</th>
+  <th>Update</th>
+  <th>Delete</th>
+</tr>
+</thead>
+{% for data in datas %}
+<tbody>
+
+  <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{data.Name}}</td>
+    <td>{{data.Age}}</td>
+    <td>{{data.Address}}</td>
+    <th>{{data.Contact}}</th>
+    <td>{{data.Mail}}</td>
+    <td><a class="btn btn-success" href="update_data/{{data.id}}">Update</a></td>
+      <td><a class="btn btn-danger" href="delete_data/{{data.id}}">Delete</a></td>
+
+
+  </tr>
+</tbody>
+{% endfor %}
+</table>
+{% endif %}
+      </div>
+    </div>
+  </body>
+</html>

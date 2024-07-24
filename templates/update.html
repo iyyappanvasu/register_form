@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="col-md-offset-3 col-md-5">
+        <form
+          method="POST"
+          action="/update_data/{{data.id}}"
+          autocomplete="off"
+        >
+          {% csrf_token %}
+          <h3 class="page-header text-primary text-center">
+            Update Your Profile
+          </h3>
+          <div class="form-group">
+            <label>Name</label>
+            <input
+              class="form-control"
+              name="name"
+              type="text"
+              value="{{data.Name}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Age</label>
+            <input
+              class="form-control"
+              name="age"
+              type="text"
+              value="{{data.Age}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input
+              class="form-control"
+              name="address"
+              type="text"
+              value="{{data.Address}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Contact</label>
+            <input
+              class="form-control"
+              name="contact"
+              type="text"
+              value="{{data.Contact}}"
+            />
+          </div>
+          <div class="form-group">
+            <label>Mail</label>
+            <input
+              class="form-control"
+              name="mail"
+              type="text"
+              value="{{data.Mail}}"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="btn btn-primary btn-block"
+              value="Update"
+              type="submit"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
